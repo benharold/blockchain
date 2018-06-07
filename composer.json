@@ -1,0 +1,21 @@
+{
+    "name": "benharold/php-blockchain",
+    "description": "A PHP implementation of Lauri Hartikka's simple blockchain",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^7.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ben Harold",
+            "email": "benharold@mac.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "BenHarold\\Blockchain\\": "src/"
+        }
+    }
+}
