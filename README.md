@@ -1,10 +1,18 @@
-# A Simple Blockchain implemented in PHP
+# A simple blockchain implemented in PHP
 
 In my quest to better understand the fundamental concepts of Bitcoin I've
 created this simple blockchain implementation in PHP.
 
 Creating a new Blockchain object will automatically create a genesis block upon
 which the chain will be built.
+
+The blockchain is stored in an in-memory object. There is no proof of work system or
+networking capability as of now.
+
+## See Also
+
+- [A blockchain in 200 lines of code by Lauri Hartikka](https://medium.com/@lhartikk/a-blockchain-in-200-lines-of-code-963cc1cc0e54)
+- [blockchain-cli](https://github.com/seanjameshan/blockchain-cli)
 
 ## Example
 
