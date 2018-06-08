@@ -6,8 +6,12 @@ created this simple blockchain implementation in PHP.
 Creating a new Blockchain object will automatically create a genesis block upon
 which the chain will be built.
 
-The blockchain is stored in an in-memory object. There is no proof of work system or
-networking capability as of now.
+The blockchain is stored in an in-memory object. There is no networking
+capability as of now.
+
+The proof-of-work system is a simplified version of what is found in Bitcoin.
+The difficulty, which is set in the `BlockFactory`, is the number of zeros that
+a block hash must begin with in order to be considered valid.
 
 ## See Also
 

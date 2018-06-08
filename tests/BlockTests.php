@@ -9,7 +9,7 @@ class BlockTests extends TestCase
     {
         $data = 'Chancellor on the brink...';
         $block = new Block(0, $data, '0');
-        $expected_hash = hash('sha256', '0' . $block->timestamp->format(\DateTime::ATOM) . '0' . $data);
+        $expected_hash = hash('sha256', '0' . $block->timestamp->format(\DateTime::ATOM) . '0' . $data . '0');
         $this->assertEquals($expected_hash, $block->hash);
     }
 
@@ -17,7 +17,7 @@ class BlockTests extends TestCase
     {
         $genesis_block = new Block(0, 'Moon', '0');
         $block = $genesis_block->next('Lambo');
-        $expected_hash = hash('sha256', '1' . $block->timestamp->format(\DateTime::ATOM) . $genesis_block->hash . 'Lambo');
+        $expected_hash = hash('sha256', '1' . $block->timestamp->format(\DateTime::ATOM) . $genesis_block->hash . 'Lambo' . '0');
         $this->assertEquals($expected_hash, $block->hash);
     }
 }

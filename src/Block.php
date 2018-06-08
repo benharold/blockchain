@@ -1,6 +1,4 @@
-<?php
-
-namespace BenHarold\Blockchain;
+<?php namespace BenHarold\Blockchain;
 
 /**
  * A block is a timestamped, indexed chunk of data suitable for inclusion in a
@@ -29,6 +27,11 @@ class Block {
      * @var string The SHA-256 hash of the previous block in the blockchain.
      */
     public $previous_hash;
+
+    /**
+     * @var int The nonce of the block. This enables proof-of-work.
+     */
+    public $nonce = 0;
 
     /**
      * @var string The SHA-256 hash of the string representation of this block.
@@ -62,7 +65,7 @@ class Block {
      */
     function hash()
     {
-        return hash('sha256', (string) $this->index . $this->timestamp->format($this->timestamp_format) . $this->previous_hash . $this->data);
+        return hash('sha256', (string) $this->index . $this->timestamp->format($this->timestamp_format) . $this->previous_hash . $this->data . (string) $this->nonce);
     }
 
     /**

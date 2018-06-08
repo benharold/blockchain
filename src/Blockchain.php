@@ -1,10 +1,7 @@
-<?php
-
-namespace BenHarold\Blockchain;
+<?php namespace BenHarold\Blockchain;
 
 use ArrayAccess;
 use Countable;
-use Iterator;
 
 /**
  * A blockchain is a chain of blocks.
