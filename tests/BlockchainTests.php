@@ -67,4 +67,26 @@ class BlockchainTests extends TestCase
         $this->chain->append($block);
         $this->assertEquals(1, $this->chain->block($block->index)->index);
     }
+
+    function testBlockchainIsCountable()
+    {
+        $this->assertEquals(1, count($this->chain));
+    }
+
+    function testArrayAccess()
+    {
+        $this->assertTrue(isset($this->chain[0]));
+        $this->assertEquals(0, $this->chain[0]->index);
+        unset($this->chain[0]);
+        $this->assertFalse(isset($this->chain[0]));
+        $this->chain[0] = new Block(0, 'Faketoshi was here', '0');
+        $this->assertTrue(isset($this->chain[0]));
+    }
+    function testBalls()
+    {
+        $chain = new Blockchain('Chancellor on the brink...');
+        $next_block = $chain[0]->next('HODL!');
+        $chain->append($next_block);
+        print_r($chain);
+    }
 }

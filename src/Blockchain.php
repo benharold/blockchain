@@ -2,13 +2,20 @@
 
 namespace BenHarold\Blockchain;
 
+use ArrayAccess;
+use Countable;
+use Iterator;
+
 /**
  * A blockchain is a chain of blocks.
  *
  * @package BenHarold\Blockchain
  */
-class Blockchain {
+class Blockchain implements ArrayAccess, Countable {
 
+    /**
+     * @var array The blocks in this blockchain.
+     */
     protected $blocks = [];
 
     /**
@@ -56,7 +63,7 @@ class Blockchain {
     {
         $previous_block = end($this->blocks);
 
-        if ($block->index !== ++$previous_block->index) {
+        if ($block->index !== $previous_block->index + 1) {
             return FALSE;
         }
 
@@ -71,4 +78,63 @@ class Blockchain {
         return TRUE;
     }
 
+    /**
+     * What is the height of this blockchain?
+     *
+     * @link http://php.net/manual/en/countable.count.php
+     * @return int The custom count as an integer.
+     */
+    public function count() : int
+    {
+        return count($this->blocks);
+    }
+
+    /**
+     * Whether an offset exists
+     *
+     * @link http://php.net/manual/en/arrayaccess.offsetexists.php
+     * @param mixed $offset
+     * @return boolean true on success or false on failure.
+     */
+    public function offsetExists($offset) : bool
+    {
+        return isset($this->blocks[$offset]);
+    }
+
+    /**
+     * Offset to retrieve
+     *
+     * @link http://php.net/manual/en/arrayaccess.offsetget.php
+     * @param mixed $offset
+     * @return Block The block corresponding to the offset.
+     */
+    public function offsetGet($offset) : Block
+    {
+        return $this->blocks[$offset];
+    }
+
+    /**
+     * Offset to set
+     *
+     * @link http://php.net/manual/en/arrayaccess.offsetset.php
+     * @param mixed $offset
+     * @param mixed $value
+     * @return void
+     */
+    public function offsetSet($offset, $value)
+    {
+        $this->blocks[$offset] = $value;
+    }
+
+    /**
+     * Offset to unset
+     *
+     * @link http://php.net/manual/en/arrayaccess.offsetunset.php
+     * @param mixed $offset
+     * @return void
+     */
+    public function offsetUnset($offset)
+    {
+        unset($this->blocks[$offset]);
+    }
 }
