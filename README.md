@@ -3,15 +3,20 @@
 In my quest to better understand the fundamental concepts of Bitcoin I've
 created this simple blockchain implementation in PHP.
 
-Creating a new Blockchain object will automatically create a genesis block upon
-which the chain will be built.
+It's not really useful for anything besides playing around with the general
+concepts of:
 
-The blockchain is stored in an in-memory object. There is no networking
+- [Blocks](src/Block.php)
+- [Blockchains](src/Blockchain.php)
+- [Proof of work mining](src/Mine.php)
+
+The blockchain is stored in an in-memory PHP object. There is no networking
 capability as of now.
 
 The proof-of-work system is a simplified version of what is found in Bitcoin.
-The difficulty, which is set in the `BlockFactory`, is the number of zeros that
-a block hash must begin with in order to be considered valid.
+The difficulty, which is set in the `Mine`, is the number of zeros that
+a block hash must begin with in order to be considered valid. It uses
+a single pass of SHA-256 unlike Bitcoin's double-SHA-256.
 
 ## See Also
 
@@ -22,7 +27,7 @@ a block hash must begin with in order to be considered valid.
 
     // Create a new blockchain
     $genesis_block_data = 'Chancellor on the brink...';
-    $chain = new Blockchain($genesis_block_data);
+    $chain = Mine::genesis_block($genesis_block_data);
     
     // Add a block
     $block = $chain[0]->next('HODL!');
@@ -74,13 +79,13 @@ Will output something like:
 
 ## Testing
 
-`phpunit`
+`vendor/bin/phpunit`
 
 ## Code Coverage
 
 The [code coverage report](docs/coverage/index.html) can be found in the `docs/coverage` directory. It can be regenerated as follows:
 
-`phpunit --coverage-html docs/coverage`
+`vendor/bin/phpunit --coverage-html docs/coverage`
 
 ## Api Documentation
 

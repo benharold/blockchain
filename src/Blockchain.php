@@ -4,8 +4,9 @@ use ArrayAccess;
 use Countable;
 
 /**
- * A blockchain is a chain of blocks.
+ * A blockchain is a chain of blocks. - Peter Todd
  *
+ * @see https://twitter.com/peterktodd/status/877580303279079424
  * @package BenHarold\Blockchain
  */
 class Blockchain implements ArrayAccess, Countable {
@@ -16,13 +17,13 @@ class Blockchain implements ArrayAccess, Countable {
     protected $blocks = [];
 
     /**
-     * Create a brand new blockchain.
+     * Create a new blockchain.
      *
-     * @param string $genesis_block_data
+     * @param \BenHarold\Blockchain\Block $genesis_block
      */
-    public function __construct(string $genesis_block_data)
+    public function __construct(Block $genesis_block)
     {
-        $this->blocks[] = new Block(0, $genesis_block_data, $previous_hash = '0');
+        $this->blocks[] = $genesis_block;
     }
 
     /**
@@ -51,6 +52,19 @@ class Blockchain implements ArrayAccess, Countable {
     }
 
     /**
+     * Convenience method which generates a new block based on the current chain
+     * tip and extends the chain with the new block.
+     *
+     * @param string $data
+     * @throws \BenHarold\Blockchain\InvalidBlockException
+     */
+    function extend(string $data) {
+        $previous_block = end($this->blocks);
+        $block = $previous_block->next($data);
+        $this->append($block);
+    }
+
+    /**
      * Determine if a new block is a valid extension of the current blockchain.
      *
      * @param \BenHarold\Blockchain\Block $block
@@ -70,6 +84,35 @@ class Blockchain implements ArrayAccess, Countable {
 
         if ($block->hash != $block->hash()) {
             return FALSE;
+        }
+
+        return TRUE;
+    }
+
+    /**
+     * Validate the entire blockchain.
+     *
+     * @return bool
+     */
+    function validate() : bool
+    {
+        $index = 0;
+        $previous_hash = '0';
+        foreach ($this->blocks as $block) {
+            if ($block->index !== $index) {
+                return FALSE;
+            }
+
+            if ($block->previous_hash != $previous_hash) {
+                return FALSE;
+            }
+
+            if ($block->hash != $block->hash()) {
+                return FALSE;
+            }
+
+            $index = $block->index + 1;
+            $previous_hash = $block->hash;
         }
 
         return TRUE;

@@ -1,6 +1,7 @@
 <?php
 
 use BenHarold\Blockchain\Block;
+use BenHarold\Blockchain\Mine;
 use PHPUnit\Framework\TestCase;
 
 class BlockTests extends TestCase
@@ -15,9 +16,10 @@ class BlockTests extends TestCase
 
     function testCreateSubsequentBlock()
     {
+        Mine::$difficulty = 2;
         $genesis_block = new Block(0, 'Moon', '0');
         $block = $genesis_block->next('Lambo');
-        $expected_hash = hash('sha256', '1' . $block->timestamp->format(\DateTime::ATOM) . $genesis_block->hash . 'Lambo' . '0');
+        $expected_hash = hash('sha256', '1' . $block->timestamp->format(\DateTime::ATOM) . $genesis_block->hash . 'Lambo' . $block->nonce);
         $this->assertEquals($expected_hash, $block->hash);
     }
 }

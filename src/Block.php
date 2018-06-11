@@ -63,7 +63,7 @@ class Block {
      *
      * @return string The SHA-256 hash of the string representation of this block.
      */
-    function hash()
+    function hash() : string
     {
         return hash('sha256', (string) $this->index . $this->timestamp->format($this->timestamp_format) . $this->previous_hash . $this->data . (string) $this->nonce);
     }
@@ -72,15 +72,12 @@ class Block {
      * Create a new block for the blockchain using this block as the tip of the
      * chain.
      *
-     * @param string $data
+     * @param string $data Profound information to be saved for all eternity.
      * @return \BenHarold\Blockchain\Block
      */
-    function next(string $data)
+    function next(string $data) : Block
     {
-        $previous_hash = $this->hash;
-        $next_index = $this->index + 1;
-
-        return new Block($next_index, $data, $previous_hash);
+        return Mine::block($data, $this);
     }
 
 }
