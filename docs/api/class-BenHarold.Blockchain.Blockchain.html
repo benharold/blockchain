@@ -85,7 +85,7 @@
 
         <div class="panel panel-default">
             <div class="panel-body">
-                A blockchain is a chain of blocks.
+                A blockchain is a chain of blocks. - Peter Todd
             </div>
         </div>
 
@@ -108,6 +108,7 @@
     <div class="info">
         
 
+            <a href="https://twitter.com/peterktodd/status/877580303279079424">https://twitter.com/peterktodd/status/877580303279079424</a><br>
             <br>
             <a href="source-class-BenHarold.Blockchain.Blockchain.html" class="open-source-code">Open source code</a>
         <br>
@@ -131,10 +132,10 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#___construct">#</a>
-            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#26-29">__construct</a>( <span> string <span class="property-name">$genesis_block_data</span> </span> )</code>
+            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#24-27">__construct</a>( <span> <a href="class-BenHarold.Blockchain.Block.html">BenHarold\Blockchain\Block</a> <span class="property-name">$genesis_block</span> </span> )</code>
 
             <div class="description">
-                Create a brand new blockchain.
+                Create a new blockchain.
 
 
 
@@ -163,7 +164,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_block">#</a>
-            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#37-40">block</a>( <span> int <span class="property-name">$index</span> </span> )</code>
+            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#35-38">block</a>( <span> int <span class="property-name">$index</span> </span> )</code>
 
             <div class="description">
                 Get a block from the blockchain according to it's index.
@@ -195,10 +196,43 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_append">#</a>
-            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#48-54">append</a>( <span> <a href="class-BenHarold.Blockchain.Block.html">BenHarold\Blockchain\Block</a> <span class="property-name">$block</span> </span> )</code>
+            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#46-52">append</a>( <span> <a href="class-BenHarold.Blockchain.Block.html">BenHarold\Blockchain\Block</a> <span class="property-name">$block</span> </span> )</code>
 
             <div class="description">
                 Append a valid block to the blockchain.
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_extend">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_extend">#</a>
+            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#61-65">extend</a>( <span> string <span class="property-name">$data</span> </span> )</code>
+
+            <div class="description">
+                Convenience method which generates a new block based on the current chain
+tip and extends the chain with the new block.
 
 
 
@@ -227,10 +261,42 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_validate_new_block">#</a>
-            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#62-79">validate_new_block</a>( <span> <a href="class-BenHarold.Blockchain.Block.html">BenHarold\Blockchain\Block</a> <span class="property-name">$block</span> </span> )</code>
+            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#73-90">validate_new_block</a>( <span> <a href="class-BenHarold.Blockchain.Block.html">BenHarold\Blockchain\Block</a> <span class="property-name">$block</span> </span> )</code>
 
             <div class="description">
                 Determine if a new block is a valid extension of the current blockchain.
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_validate">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_validate">#</a>
+            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#97-119">validate</a>( )</code>
+
+            <div class="description">
+                Validate the entire blockchain.
 
 
 
@@ -259,7 +325,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_count">#</a>
-            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#87-90">count</a>( )</code>
+            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#127-130">count</a>( )</code>
 
             <div class="description">
                 What is the height of this blockchain?
@@ -303,7 +369,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_offsetExists">#</a>
-            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#99-102">offsetExists</a>( <span> mixed <span class="property-name">$offset</span> </span> )</code>
+            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#139-142">offsetExists</a>( <span> mixed <span class="property-name">$offset</span> </span> )</code>
 
             <div class="description">
                 Whether an offset exists
@@ -347,7 +413,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_offsetGet">#</a>
-            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#111-114">offsetGet</a>( <span> mixed <span class="property-name">$offset</span> </span> )</code>
+            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#151-154">offsetGet</a>( <span> mixed <span class="property-name">$offset</span> </span> )</code>
 
             <div class="description">
                 Offset to retrieve
@@ -391,7 +457,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_offsetSet">#</a>
-            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#124-127">offsetSet</a>( <span> mixed <span class="property-name">$offset</span> </span>, <span> mixed <span class="property-name">$value</span> </span> )</code>
+            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#164-167">offsetSet</a>( <span> mixed <span class="property-name">$offset</span> </span>, <span> mixed <span class="property-name">$value</span> </span> )</code>
 
             <div class="description">
                 Offset to set
@@ -435,7 +501,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_offsetUnset">#</a>
-            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#136-139">offsetUnset</a>( <span> mixed <span class="property-name">$offset</span> </span> )</code>
+            <code><a href="source-class-BenHarold.Blockchain.Blockchain.html#176-179">offsetUnset</a>( <span> mixed <span class="property-name">$offset</span> </span> )</code>
 
             <div class="description">
                 Offset to unset
@@ -482,11 +548,12 @@
 
     <td class="name">
         <code>
-            <a href="source-class-BenHarold.Blockchain.Blockchain.html#19" class="property-name">$blocks</a>
+            <a href="source-class-BenHarold.Blockchain.Blockchain.html#17" class="property-name">$blocks</a>
         </code>
         <div class="description">
             
 
+                <a href="https://twitter.com/peterktodd/status/877580303279079424">https://twitter.com/peterktodd/status/877580303279079424</a><br>
                 <br>
         </div>
     </td>
