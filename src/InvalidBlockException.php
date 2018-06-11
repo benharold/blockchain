@@ -1,3 +1,5 @@
 <?php namespace BenHarold\Blockchain;
 
-class InvalidBlockException extends \Exception {}
+class InvalidBlockException extends \Exception
+{
+}

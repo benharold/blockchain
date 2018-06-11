@@ -6,7 +6,8 @@
  *
  * @package BenHarold\Blockchain
  */
-class Block {
+class Block
+{
 
     /**
      * @var int The index of this block in the blockchain.
@@ -46,11 +47,12 @@ class Block {
     /**
      * Create a new block.
      *
-     * @param int $index
+     * @param int    $index
      * @param string $data
      * @param string $previous_hash
      */
-    function __construct(int $index, string $data, string $previous_hash) {
+    public function __construct(int $index, string $data, string $previous_hash)
+    {
         $this->index = $index;
         $this->timestamp = new \DateTime();
         $this->data = $data;
@@ -63,7 +65,7 @@ class Block {
      *
      * @return string The SHA-256 hash of the string representation of this block.
      */
-    function hash() : string
+    public function hash() : string
     {
         return hash('sha256', (string) $this->index . $this->timestamp->format($this->timestamp_format) . $this->previous_hash . $this->data . (string) $this->nonce);
     }
@@ -72,12 +74,11 @@ class Block {
      * Create a new block for the blockchain using this block as the tip of the
      * chain.
      *
-     * @param string $data Profound information to be saved for all eternity.
+     * @param  string $data Profound information to be saved for all eternity.
      * @return \BenHarold\Blockchain\Block
      */
-    function next(string $data) : Block
+    public function next(string $data) : Block
     {
         return Mine::block($data, $this);
     }
-
 }
